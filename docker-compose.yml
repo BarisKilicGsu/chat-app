@@ -13,21 +13,6 @@ services:
     depends_on:
       kafka:
         condition: service_healthy
-    
-  frontend:
-    build: ./frontend
-    container_name: frontend
-    environment:
-      - REACT_APP_BASE_URL=192.168.1.98:8000
-    ports:
-      - "3000:3000"
-    volumes:
-      - shared-data:/data
-    networks:
-      - app-network
-    depends_on:
-      - backend
-
   postgres:
     container_name: postgres
     image: postgres:latest
