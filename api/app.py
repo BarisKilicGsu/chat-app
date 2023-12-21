@@ -19,7 +19,7 @@ import os
 logger = logging.getLogger('tcpserver')
 app = FastAPI()
 
-origins = ["*"]  # Tüm originlere izin ver
+origins = ["204.236.252.67","*"]  # Tüm originlere izin ver
 
 app.add_middleware(
     CORSMiddleware,
