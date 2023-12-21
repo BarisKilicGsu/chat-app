@@ -6,7 +6,7 @@ services:
     build: ./frontend
     container_name: frontend
     environment:
-      - REACT_APP_BASE_URL=3.81.96.3:8000
+      - REACT_APP_BASE_URL=3.94.134.103:8000
     ports:
       - "3000:3000"
     volumes:
