@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - KAFKA_HOST=0.0.0.0:9092
+      - KAFKA_HOST=3.88.150.78:9092
     volumes:
       - shared-data:/data
     networks:
@@ -32,7 +32,7 @@ services:
     container_name: kafka-consumer
     build: ./kafka_consumer
     environment:
-      - KAFKA_HOST=0.0.0.0:9092
+      - KAFKA_HOST=3.88.150.78:9092
     volumes:
       - shared-data:/data
     networks:
