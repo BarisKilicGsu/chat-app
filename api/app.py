@@ -14,7 +14,7 @@ from datetime import datetime
 from kafka import KafkaProducer
 from fastapi.websockets import WebSocketDisconnect
 from fastapi import FastAPI, HTTPException, Depends, WebSocket
-
+import os
 
 logger = logging.getLogger('tcpserver')
 app = FastAPI()
@@ -32,7 +32,7 @@ app.add_middleware(
 db_connection = postgres_connect(settings.POSTGRES_DB, settings.POSTGRES_USER, settings.POSTGRES_PASSWORD, settings.POSTGRES_HOST, settings.POSTGRES_PORT)
 
 producer = KafkaProducer(
-    bootstrap_servers=['kafka:9092'],
+    bootstrap_servers=[os.getenv('KAFKA_HOST')],
     value_serializer=lambda v: json.dumps(v).encode('utf-8')
 )
 

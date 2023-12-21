@@ -3,13 +3,15 @@ import json
 import logging
 import db
 from config import settings
+import os
+
 
 logger = logging.getLogger('tcpserver')
 
 def kafka_consumer_job():
     consumer = KafkaConsumer(
         'sent_messages',
-        bootstrap_servers=['kafka:9092'],
+        bootstrap_servers=[os.getenv('KAFKA_HOST')],
         auto_offset_reset='latest',
         group_id='streamlit-consumer-group',
         value_deserializer=lambda m: json.loads(m.decode('utf-8'))
